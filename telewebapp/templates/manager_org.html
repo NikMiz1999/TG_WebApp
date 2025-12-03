@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Орг-настройки</title>
+  <link rel="stylesheet" href="/static/css/manager.css">
+  <style>
+    body{margin:0}
+    .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;padding:16px}
+    .card{background:#121a30;border:1px solid #25304d;border-radius:12px;padding:12px;color:#e9f2ff}
+    .row{display:flex;gap:8px;margin-bottom:8px}
+    input{padding:6px 8px;border:1px solid #25304d;border-radius:8px;background:#0b1329;color:#e9f2ff}
+    table{width:100%;border-collapse:collapse}
+    th,td{border:1px solid #25304d;padding:6px}
+    th{background:#0e1731;text-align:left}
+    .btn{display:inline-block;background:#2b3c6b;color:#fff;text-decoration:none;padding:6px 10px;border-radius:8px;border:1px solid #25304d;cursor:pointer}
+    .muted{color:#8aa2c0}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #25304d;background:#0d1427}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <h1>Орг-настройки</h1>
+    <nav>
+      <a class="btn" href="/manager">← В панель</a>
+      <a class="btn" href="/online" target="_blank">Карта</a>
+    </nav>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Треды (topics)</h2>
+      <div class="row">
+        <input id="t-fio" placeholder="ФИО">
+        <input id="t-thread" placeholder="thread_id (число)">
+        <button id="t-save" class="btn">Сохранить</button>
+      </div>
+      <table id="t-table"><thead><tr><th>ФИО</th><th>thread_id</th><th></th></tr></thead><tbody></tbody></table>
+      
+    </section>
+
+    <section class="card">
+      <h2>Бригады (fio → бригада)</h2>
+      <div class="row">
+        <input id="b-fio" placeholder="ФИО">
+        <input id="b-name" placeholder="Название бригады">
+        <button id="b-save" class="btn">Сохранить</button>
+      </div>
+      <table id="b-table"><thead><tr><th>ФИО</th><th>Бригада</th><th></th></tr></thead><tbody></tbody></table>
+      
+    </section>
+
+    <section class="card">
+      <h2>Сотрудники (ID для авто-аутентификации)</h2>
+      <div class="row">
+        <input id="e-fio"  placeholder="ФИО">
+        <input id="e-uid"  placeholder="tg_user_id (число)">
+        <button id="e-save" class="btn">Сохранить</button>
+      </div>
+      <table id="e-table"><thead><tr><th>ФИО</th><th>tg_user_id</th><th></th></tr></thead><tbody></tbody></table>
+      
+    </section>
+
+    <section class="card">
+      <h2>Групповой чат</h2>
+      <div class="row">
+        <input id="g-id" placeholder="group_chat_id (число)">
+        <button id="g-save" class="btn">Сохранить</button>
+      </div>
+      <div class="muted">Используется при отправке сообщений в темы.</div>
+    </section>
+  </main>
+
+  
+
+  <script src="/static/js/manager_org.js"></script>
+</body>
+</html>

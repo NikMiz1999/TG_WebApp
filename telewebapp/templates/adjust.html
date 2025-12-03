@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Ручные правки</h2>
+  {% if request.session.get('adj_flash') %}
+    <div class="flash">{{ request.session.get('adj_flash') }}</div>
+    {% set _ = request.session.pop('adj_flash') %}
+  {% endif %}
+
+  <h3 style="margin-top:16px;">1) Изменение начала/конца</h3>
+  <p class="small">Можно изменить своё время или время коллеги. Если указать только начало — запишится старт. Если указать только конец — должен быть старт в таблице. Если указать оба — пересчитаются итоговые часы.</p>
+  <form method="post" action="/adjust_time">
+    <div class="form-row">
+      <label>Сотрудник</label>
+      <select name="person">
+        {% for p in teammates %}<option value="{{ p }}">{{ p }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Дата</label>
+      <input type="date" name="date" value="{{ today }}" required>
+    </div>
+    <div class="form-row">
+      <label>Начало (HH:MM)</label>
+      <input type="text" name="start_time" placeholder="напр. 08:45">
+    </div>
+    <div class="form-row">
+      <label>Конец (HH:MM)</label>
+      <input type="text" name="end_time" placeholder="напр. 17:30">
+    </div>
+    <div class="row">
+      <button class="button" type="submit">Сохранить</button>
+      <a class="button secondary" href="/">Назад</a>
+    </div>
+  </form>
+
+  <h3 style="margin-top:24px;">2) Статус для коллеги: больничный / уехал</h3>
+  <p class="small">Применяются те же правила, что в обычной отметке: при «Уехал» после старта — считаются часы и добавляется +4; при «Больничный» после старта — минимум 6 часов.</p>
+  <form method="post" action="/adjust_status">
+    <div class="form-row">
+      <label>Сотрудник</label>
+      <select name="person">
+        {% for p in teammates %}<option value="{{ p }}">{{ p }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Дата статуса</label>
+      <input type="date" name="date_main" value="{{ today }}" required>
+    </div>
+    <div class="form-row">
+      <label>Статус</label>
+      <select name="status" required>
+        <option value="sick">💊 Больничный</option>
+        <option value="left">🚗 Уехал</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Дата возвращения (опц.)</label>
+      <input type="date" name="return_date">
+    </div>
+    <div class="form-row">
+      <label>Следующий отъезд (опц.)</label>
+      <input type="date" name="next_departure">
+    </div>
+    <div class="row">
+      <button class="button" type="submit">Сохранить</button>
+    </div>
+  </form>
+{% endblock %}

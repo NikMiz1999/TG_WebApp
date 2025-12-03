@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+requests
+gspread
+oauth2client
+jinja2
+python-multipart
+itsdangerous
+tzdata
+python-telegram-bot>=20,<21
