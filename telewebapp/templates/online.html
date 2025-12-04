@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Онлайн-трекинг</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script src="/static/js/online.js"></script>
+  <style>
+    body { margin:0; font-family: sans-serif; }
+    #map { height: 90vh; }
+    #sidebar { height: 90vh; overflow-y:auto; width:250px; float:left; border-right:1px solid #ccc; padding:5px;}
+    .emp { padding:4px; margin:2px 0; border-radius:4px; cursor:pointer; }
+    .emp.green { background:#d4edda; }
+    .emp.yellow { background:#fff3cd; }
+    .emp.red { background:#f8d7da; }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <h3>Сотрудники</h3>
+    <div id="list"></div>
+  </div>
+  <div id="map"></div>
+</body>
+</html>
